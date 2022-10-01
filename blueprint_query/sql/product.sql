@@ -1,0 +1,1 @@
+select * from equipment where e_name='$input_product'
