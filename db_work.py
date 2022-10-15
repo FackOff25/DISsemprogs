@@ -20,3 +20,17 @@ def select(db_config: dict, sql: str) -> Tuple[Tuple, List[str]]:
         schema = [column[0] for column in cursor.description]
         result = cursor.fetchall()
     return result, schema
+
+
+def select_dict(db_config: dict, _sql: str):
+    with DBContextManager(db_config) as cursor:
+        if cursor is None:
+            raise ValueError('Cursor not found')
+        cursor.execute(_sql)
+        result = []
+        schema = [column[0] for column in cursor.description]
+        for row in cursor.fetchall():
+            result.append(dict(zip(schema, row)))
+
+        print('result dict=', result)
+    return result
