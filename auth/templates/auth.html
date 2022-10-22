@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>auth</title>
+    <link type="text/css" rel="stylesheet" href="static/main.css">
+</head>
+<body>
+<div>
+    <h2 align="center">Вы успешно зарегестрировались как внутренний пользователь '{{ user_group }}'</h2>
+    <p align="center">
+        <a href="{{ url_for('main_menu') }}">Нажмите для продолжения работы</a>
+    </p>
+</div>
+</body>
+</html>

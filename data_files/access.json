@@ -1,0 +1,11 @@
+{
+  "worker": [
+    "bp_report.start_page2"
+  ],
+  "manager": [
+    "bp_report.start_page1"
+  ],
+  "external": [
+    "bp_report"
+  ]
+}
