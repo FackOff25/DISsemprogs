@@ -40,6 +40,6 @@ def define_user(login: str, password: str) -> Optional[Dict]:
         print('_user_info=', _user_info)
         if _user_info:
             user_info = _user_info
-            del _user_info  # Пока неизвестно зачем
+            del _user_info
             break
     return user_info
