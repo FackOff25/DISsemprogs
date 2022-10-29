@@ -10,7 +10,7 @@ app.register_blueprint(blueprint_auth, url_prefix='/auth')
 app.register_blueprint(blueprint_query, url_prefix='/requests')
 
 app.config['db_config'] = json.load(open('data_files/dbconfig.json'))
-# app.config['access_config'] = json.load(open('data_files/access.json'))
+app.config['access_config'] = json.load(open('data_files/access.json'))
 
 
 @app.route('/', methods=['GET', 'POST'])
