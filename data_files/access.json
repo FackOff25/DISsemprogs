@@ -1,0 +1,12 @@
+{
+  "worker": [
+    "bp_report.report_page1",
+    "bp_report.start_report"
+  ],
+  "manager": [
+    "bp_report.report_page1"
+  ],
+  "external": [
+    "blueprint_market"
+  ]
+}
