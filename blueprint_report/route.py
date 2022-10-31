@@ -14,7 +14,7 @@ def start_report():
 @blueprint_report.route('/page1')
 @group_required
 def start_page1():
-    return render_template('page1.html')
+    return render_template('product_form.html')
 
 
 @blueprint_report.route('/page2')
