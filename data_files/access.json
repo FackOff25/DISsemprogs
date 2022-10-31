@@ -7,6 +7,6 @@
     "bp_report.report_page1"
   ],
   "external": [
-    "blueprint_market"
+    "bp_order"
   ]
 }

@@ -1,19 +1,20 @@
 from flask import Flask, url_for, render_template, request, json, session, redirect
 from auth.route import blueprint_auth
-from blueprint_query.route import blueprint_query
-# from access import login_required
+from basket.route import blueprint_order
+from access import login_required
 
 app = Flask(__name__)
 app.secret_key = 'Superley'
 
 app.register_blueprint(blueprint_auth, url_prefix='/auth')
-app.register_blueprint(blueprint_query, url_prefix='/requests')
+app.register_blueprint(blueprint_order, url_prefix='/order')
 
 app.config['db_config'] = json.load(open('data_files/dbconfig.json'))
 app.config['access_config'] = json.load(open('data_files/access.json'))
 
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def menu_choice():
     if 'user_id' in session:
         if session.get('user_group', None):
