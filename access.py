@@ -18,6 +18,9 @@ def group_validation(config: dict) -> bool:
     print('endpoint_app=', endpoint_app)
     if 'user_group' in session:
         user_group = session['user_group']
+        print(user_group)
+        if user_group is None:
+            user_group = 'external'
         if user_group in config and endpoint_app in config[user_group]:
             return True
         elif user_group in config and endpoint_func in config[user_group]:
