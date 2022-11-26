@@ -24,6 +24,7 @@ def order_index():
 		return render_template('basket_order_list.html', items=items, basket=basket_items)
 	else:
 		prod_id = request.form['prod_id']
+		print("FORM: ", request.form)
 		sql = provider.get('all_items.sql')
 		items = select_dict(db_config, sql)
 

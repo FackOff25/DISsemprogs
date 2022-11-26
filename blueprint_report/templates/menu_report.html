@@ -4,15 +4,30 @@
     <meta charset="UTF-8">
     <title>Menu</title>
     <link type="text/css" rel="stylesheet" href="static/main.css">
+    <style type="text/css">
+        .named_list {
+            font-size: 12pt;
+            color: green;
+            display: inline-block;
+            width: 500px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 <div>
-    <h1 align="center">Меню отчётов</h1>
-    <p align="center">
-        <a href="{{ url_for('bp_report.start_page1') }}">Отчёт 1</a><br><br>
-        <a href="{{ url_for('bp_report.start_page2') }}">Отчёт 2</a><br><br>
+    <h1 align="center">Меню работы с отчётами</h1>
+    <center>
+        {% report in report_list %}
+        <form action="" method="post">
+            <label for="create_rep" class="named_list">{{ report['rep_name'] }}</label>
+            <input type="submit" name="create_rep" id="create_rep" value="Создать">
+            <input type="submit" name="view_rep" value="Смотреть">
+            <input type="hidden" name="rep_id" value="{{report['rep_id']}}">
+        </form>
+        {% endfor %}
         <a href="{{ url_for('menu_choice') }}">Вернуться в главное меню</a>
-    </p>
+    </center>
 </div>
 </body>
 </html>
