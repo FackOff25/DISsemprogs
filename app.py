@@ -1,3 +1,5 @@
+from typing import Callable, List
+
 from flask import Flask, url_for, render_template, request, json, session, redirect
 from auth.route import blueprint_auth
 from basket.route import blueprint_order
@@ -6,7 +8,7 @@ from blueprint_query.route import blueprint_query
 from blueprint_report.route import blueprint_report
 
 app = Flask(__name__)
-app.secret_key = 'Superley'
+app.secret_key = 'Superkey'
 
 app.register_blueprint(blueprint_auth, url_prefix='/auth')
 app.register_blueprint(blueprint_order, url_prefix='/order')
@@ -15,6 +17,8 @@ app.register_blueprint(blueprint_query, url_prefix='/query')
 
 app.config['db_config'] = json.load(open('data_files/dbconfig.json'))
 app.config['access_config'] = json.load(open('data_files/access.json'))
+app.config['reports_config'] = json.load(open('data_files/reports.json'))
+app.config['reports_list_config'] = json.load(open('data_files/reports_list.json'))
 
 
 @app.route('/', methods=['GET', 'POST'])

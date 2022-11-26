@@ -5,30 +5,17 @@ from db_work import call_proc
 
 blueprint_report = Blueprint('bp_report', __name__, template_folder='templates')
 
-report_list = [
-    {'rep_name': 'Отчёт о месячной выручке', 'rep_id': '1'},
-    {'rep_name': 'Отчёт о продажах', 'rep_id': '2'},
-    {'rep_name': 'Отчёт 3', 'rep_id': '3'},
-]
-
-report_url = {
-    '1': {'create_rep': 'bp_report.create_rep1', 'view_rep': 'bp_report,view_rep1'},
-    '2': {'create_rep': 'bp_report.create_rep2', 'view_rep': 'bp_report,view_rep2'},
-
-}
-
-
 @blueprint_report.route('/', methods=['GET', 'POST'])
 @login_required
 def start_report():
     if request.method == 'GET':
-        return render_template('menu_report.html', report_list=report_list)
+        return render_template('menu_report.html', report_list=current_app.config['reports_list_config'])
     else:
         rep_id = request.form.get('rep_id')
         if request.form.get('create_rep'):
-            url_rep = report_url[rep_id]['create_rep']
+            url_rep = current_app.config['reports_config'][rep_id]['create_rep']
         else:
-            url_rep = report_url[rep_id]['view_rep']
+            url_rep = current_app.config['reports_config'][rep_id]['view_rep']
         return redirect(url_for(url_rep))
 
 

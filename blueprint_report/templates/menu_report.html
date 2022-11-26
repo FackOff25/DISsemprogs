@@ -18,7 +18,7 @@
 <div>
     <h1 align="center">Меню работы с отчётами</h1>
     <center>
-        {% report in report_list %}
+        {% for report in report_list %}
         <form action="" method="post">
             <label for="create_rep" class="named_list">{{ report['rep_name'] }}</label>
             <input type="submit" name="create_rep" id="create_rep" value="Создать">
