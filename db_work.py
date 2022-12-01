@@ -46,11 +46,13 @@ def insert(dbconfig: dict, _sql: str):
 
 def call_proc(dbconfig: dict, proc_name: str, *args):
     with DBContextManager(dbconfig) as cursor:
-        raise ValueError('Курсор не создан')
-    param_list = []
-    for arg in args:
-        print("arg=", arg)
-        param_list.append(arg)
-    print("param_list=", param_list)
-    res = cursor.callproc(proc_name, param_list)
-    return res
+        if cursor is None:
+            raise ValueError('Курсор не создан')
+        param_list = []
+        for arg in args:
+            print("arg=", arg)
+            param_list.append(arg)
+        print("param_list=", param_list)
+        print("proc_name=", proc_name)
+        res = cursor.callproc(proc_name, param_list)
+        return res
